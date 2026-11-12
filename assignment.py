@@ -6,17 +6,11 @@ for i in range(10):
     Stack.append(-1)
 
 def IsEmpty():
-    if TopOfStack == -1:
-        return True
-    else:
-        return False
+    return TopOfStack == -1
 
 
 def IsFull():
-    if TopOfStack == 9:
-        return True
-    else:
-        return False
+    return TopOfStack == 9
 
 
 # Exercise 2
@@ -24,66 +18,68 @@ Stack = []
 for i in range(10):
     Stack.append(-1)
 TopOfStack = -1
+
 def Push(Item):
-    global TopOfStack
+    global Stack, TopOfStack
+
     if TopOfStack == 9:
         return False
-    else:
-        TopOfStack += 1
-        Stack[TopOfStack] = Item
-        return True
+
+    TopOfStack += 1
+    Stack[TopOfStack] = Item
+    return True
+
 
 # Exercise 3
-Stack = [10, 20, 30]
-for i in range(7):
+Stack = []
+for i in range(10):
     Stack.append(-1)
-TopOfStack = 2
+TopOfStack = -1
+
 def Pop():
-    global Stack_1
-    global TopOfStack
-    varia = 0
+    global Stack, TopOfStack
+
     if TopOfStack == -1:
         return -1
-    else:
-        varia = Stack[TopOfStack]
-        Stack[TopOfStack] = -1
-        TopOfStack -= 1
-        return varia
+
+    Item = Stack[TopOfStack]
+    Stack[TopOfStack] = -1
+    TopOfStack -= 1
+
+    return Item
 
 # Exercise 4
 Stack = [8, 3]
 for i in range(8):
     Stack.append(-1)
 TopOfStack = 1
+
 def Peek():
-    global Stack
-    global TopOfStack
     if TopOfStack == -1:
         return -1
-    else:
-        return Stack[TopOfStack]
+
+    return Stack[TopOfStack]
 
 
 def Size():
-    global TopOfStack
     return TopOfStack + 1
+
 
 # Exercise 5
 Stack = []
 for i in range(10):
-    Stack.append("a")
-TopOfStack = 9
+    Stack.append(-1)
+TopOfStack = -1
+
 def ReverseWord(Word):
-    global Stack
-    global TopOfStack
-    if TopOfStack == 9:
-        for i in range(10):
-            Stack.pop()
-            TopOfStack -= 1
+    global Stack, TopOfStack
+
+    for Letter in Word:
+        Push(Letter)
+
     Rev = ""
-    for i in Word:
-        Stack.append(i)
-        TopOfStack += 1
-    for i in range(TopOfStack, -1, -1):
-        Rev = Rev + Stack[i]
+
+    while TopOfStack != -1:
+        Rev = Rev + Pop()
+
     return Rev
