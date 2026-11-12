@@ -74,6 +74,9 @@ TopOfStack = -1
 def ReverseWord(Word):
     global Stack, TopOfStack
 
+    TopOfStack = -1
+    Stack = [-1] * 10
+
     for Letter in Word:
         Push(Letter)
 
